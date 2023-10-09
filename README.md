@@ -172,7 +172,7 @@ add list=LAN
 /interface pptp-server server
 set enabled=yes
 /ip address
-add address=103.31.132.90/29 interface=ether1-INDOCYBER network=103.31.132.88
+add address=103.31.13x.xx/xx interface=ether1-INDOCYBER network=103.31.13x.xx
 add address=192.168.18.36/24 interface=ether3-BIZNET network=192.168.18.0
 add address=192.11.0.1/24 interface=ether4 network=192.11.0.0
 add address=192.12.0.1/24 interface=ether5-COMNET network=192.12.0.0
@@ -181,10 +181,10 @@ add address=192.168.100.36/24 interface=ether5-COMNET network=192.168.100.0
 add address=192.11.0.0/24 gateway=192.11.0.1
 add address=192.12.0.0/24 gateway=192.12.0.1
 /ip dns
-set allow-remote-requests=yes servers="8.8.8.8,8.8.4.4,1.1.1.1,103.31.132.132,\
-    103.31.134.134,192.168.18.1,192.168.100.1"
+set allow-remote-requests=yes servers="8.8.8.8,8.8.4.4,1.1.1.1,103.31.13x.13x,\
+    103.31.13x.13x,192.168.18.1,192.168.100.1"
 /ip firewall address-list
-add address=103.31.132.88/29 list=Lokal
+add address=103.31.13x.xx/xx list=Lokal
 add address=192.168.100.0/24 list=Lokal
 add address=192.168.18.0/24 list=Lokal
 add address=192.11.0.0/24 list=Lokal
@@ -241,17 +241,17 @@ add action=masquerade chain=srcnat comment=INDOCYBER out-interface=\
 add action=masquerade chain=srcnat comment=COMNET out-interface=ether5-COMNET
 add action=masquerade chain=srcnat comment=BIZNET out-interface=ether3-BIZNET
 add action=masquerade chain=srcnat comment=VPN
-add action=dst-nat chain=dstnat comment=Client1 dst-address=103.31.132.90 \
+add action=dst-nat chain=dstnat comment=Client1 dst-address=103.31.13x.xx \
     dst-port=2001 protocol=tcp to-addresses=9.9.9.9 to-ports=2001
-add action=dst-nat chain=dstnat comment=HIOSO dst-address=103.31.132.90 \
+add action=dst-nat chain=dstnat comment=HIOSO dst-address=103.31.13x.xx \
     dst-port=2023 protocol=tcp to-addresses=9.9.9.9 to-ports=2023
 add action=dst-nat chain=dstnat comment="Mikrotik RB750Gr3 Rumah Pak Taufik" \
-    dst-address=103.31.132.90 dst-port=1001 protocol=tcp to-addresses=9.9.9.9 \
+    dst-address=103.31.13x.xx dst-port=1001 protocol=tcp to-addresses=9.9.9.9 \
     to-ports=8191
 add action=dst-nat chain=dstnat comment="Mikrotik RB951 Rumah Nanda" \
-    dst-address=103.31.132.90 dst-port=1003 protocol=tcp to-addresses=\
+    dst-address=103.31.13x.xx dst-port=1003 protocol=tcp to-addresses=\
     192.168.30.1 to-ports=8291
-add action=dst-nat chain=dstnat comment=Mikrotik dst-address=103.31.132.90 \
+add action=dst-nat chain=dstnat comment=Mikrotik dst-address=103.31.13x.xx \
     dst-port=1002 protocol=tcp to-addresses=192.168.2.1 to-ports=8291
 /ip firewall raw
 add action=accept chain=prerouting comment=DDoS disabled=yes limit=\
@@ -570,7 +570,7 @@ add interval=2d name=Reboot-Otomatis on-event="/system reboot" policy=\
     start-date=apr/11/2023 start-time=03:50:00
 /tool netwatch
 add down-script=":local CHID \"5994955961\";\r\
-    \n:local BotID \"6063755341:AAG8dqkis45GGj2feYzDvsrKKcHrxXBCSu8\";\r\
+    \n:local BotID \"6063755341:AAG8dqkis45GGj2feYzDvsrKKcHrxXBCSu8x\";\r\
     \n:local HostStatus \"Down\";\r\
     \n\r\
     \n:local message \"Ping \$host \$HostStatus\";\r\
@@ -578,7 +578,7 @@ add down-script=":local CHID \"5994955961\";\r\
     \n/tool fetch url=\"https://api.telegram.org/bot\$BotID/sendmessage\\\?cha\
     t_id=\$CHID&text=\$message\";" host=192.168.12.2 interval=5s up-script=":l\
     ocal CHID \"5994955961\";\r\
-    \n:local BotID \"6063755341:AAG8dqkis45GGj2feYzDvsrKKcHrxXBCSu8\";\r\
+    \n:local BotID \"6063755341:AAG8dqkis45GGj2feYzDvsrKKcHrxXBCSu8x\";\r\
     \n:local HostStatus \"Up\";\r\
     \n\r\
     \n:local message \"Ping \$host \$HostStatus\";\r\
